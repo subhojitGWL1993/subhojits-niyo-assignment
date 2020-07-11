@@ -43,5 +43,9 @@ export const MovieCard = (props) => {
 			</div>
 		);
 	else
-		return 'No movie details';
+		return (
+			<strong style={{color: '#FFFFFF'}}>
+				No movie details
+			</strong>
+		);
 }

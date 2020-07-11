@@ -50,7 +50,7 @@ function App(props) {
   }
   // movie card click handler
   const handleCardClick = (e, movieId) => {
-    window.location.href = `/banks/${movieId}`;
+    window.location.href = `/list/${movieId}`;
   }
   // search field check
   let searchField = (
@@ -86,7 +86,7 @@ function App(props) {
             isEmpty={isEmpty}
           />
         </Route>
-        <Route exact path="/banks/:id">
+        <Route exact path="/list/:id">
           <MovieDetails
             movie={movieData}
             handleCardClick={handleCardClick}

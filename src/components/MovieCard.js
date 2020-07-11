@@ -1,7 +1,7 @@
 import React from 'react';
 
 export const MovieCard = (props) => {
-	const { movie, handleToggleFav, ind, handleCardClick, isEmpty } = props;
+	const { movie, handleToggleFav, handleCardClick, isEmpty } = props;
 	const urlArr = window.location.href.split('/');
 	let details_Av = '';
 	let buttonDiv = (

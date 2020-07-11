@@ -25,7 +25,6 @@ export const SearchComponent = (props) => {
 		                <button 
 		                  type="submit" 
 		                  className="searchButton_class"
-		                  // onClick={this.handleSubmitSearch}
 		                >
 		                  Search
 		                </button>

@@ -4,7 +4,6 @@ export const FETCH_MOVIES_SUCCESS = 'FETCH_MOVIES_SUCCESS';
 export const FETCH_MOVIES_FAILURE = 'FETCH_MOVIES_FAILURE';
 export const FAV_MOVIE_LIST = 'FAV_MOVIE_LIST';
 export const MOVIE_DETAILS_SUCCESS = 'MOVIE_DETAILS_SUCCESS';
-// export const UPDATE_USER_SUCCESS = 'UPDATE_USER_SUCCESS';
 // user url set
 const OmdbUrl = `http://www.omdbapi.com/?apikey=fc32c816`;
 const ALL = 'All';
@@ -22,11 +21,6 @@ export const movieDetailsSuccess = response => ({
   type: MOVIE_DETAILS_SUCCESS,
   payload: {...response}
 });
-
-/*export const updateUsersSuccess = user => ({
-  type: UPDATE_USER_SUCCESS,
-  payload: { user }
-});*/
 
 export const fetchMoviesFailure = error => ({
   type: FETCH_MOVIES_FAILURE,
@@ -49,7 +43,6 @@ export function fetchMovies(page, searchText, type, scrolled, totalResults) {
       .then(handleErrors)
       .then(res => res.json())
       .then(json => {
-        console.log("json", json);
         if(json.Response)
           dispatch(fetchMoviesSuccess(json, page, scrolled));
         return json;
@@ -64,8 +57,6 @@ export function fetchMovies(page, searchText, type, scrolled, totalResults) {
 export function handleFavourites(movieKey) {
   let getList = localStorage.getItem('movieList');
   let getIndex = null;
-  // let movieKey = movie.imdbID + '' + ind;
-  console.log("fav handler", movieKey);
   if(getList) {
     getList = JSON.parse(getList);
     if(getList.length > 0 && getList !== null) {
@@ -95,16 +86,14 @@ export function handleFavourites(movieKey) {
   };
 }
 
-// handle movie details
+// get movie details
 export function getMovieDetails(movieId) {
-  console.log("movie details", movieId);
   return dispatch => {
     dispatch(fetchMoviesBegin());
     return fetch(`${OmdbUrl}&i=${movieId}`)
       .then(handleErrors)
       .then(res => res.json())
       .then(json => {
-        console.log("json", json);
         if(json.Response)
           dispatch(movieDetailsSuccess(json));
         return json;
@@ -114,28 +103,6 @@ export function getMovieDetails(movieId) {
       });
   };
 }
-
-// put request for update
-/*export function updateUsers(dataAction) {
-  let id = dataAction.id;
-  return dispatch => {
-    dispatch(fetchUsersBegin());
-    return fetch(`${userUrl}/${id}`, {
-      method: 'PUT',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(dataAction),
-    })
-    .then(res => res.json())
-    .then(json => {
-      dispatch(updateUsersSuccess(json));
-    })
-    .catch(error => {
-      dispatch(fetchUsersFailure(error))
-    });
-  }
-}*/
 
 // HTTP errors handling since fetch won't.
 export function handleErrors(response) {

@@ -2,7 +2,6 @@ import React from 'react';
 
 export const Details = (props) => {
 	const { movie } = props;
-	console.log("details", movie);
 	return (
 		<div className="details_divOuter">
 			<h3>Director:</h3> <p>{movie.Director}</p>

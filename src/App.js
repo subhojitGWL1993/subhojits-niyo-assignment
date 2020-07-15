@@ -8,10 +8,11 @@ import { HeaderComponent } from './components/HeaderComponent';
 import { MovieDetails } from './components/MovieDetails';
 import './App.css';
 // react router import
-import { Switch, Route, withRouter, loading } from 'react-router-dom';
+import { Switch, Route, withRouter } from 'react-router-dom';
+const Favourites = "favourites";
 
 function App(props) {
-  const { movies, error, totalResults, page, loading, movieData, dispatch } = props;
+  const { movies, error, totalResults, page, loading, movieData, dispatch, favList } = props;
   const obj = { searchText: 'abc', type: 'All', pageNumber: 1, reRender: false, scrolled: false };
   const [dropData, setDropData] = useState({...obj});
   const urlArr = window.location.href.split('/');
@@ -45,8 +46,8 @@ function App(props) {
     setDropData(prevData => ({...prevData, reRender: !prevData.reRender, scrolled: false, pageNumber: 1}));
   }
   // toggle favourite handler
-  const handleToggleFav = (e, movieKey) => {
-    props.dispatch(handleFavourites(movieKey));
+  const handleToggleFav = (e, movie) => {
+    props.dispatch(handleFavourites(movie));
   }
   // movie card click handler
   const handleCardClick = (e, movieId) => {
@@ -60,7 +61,7 @@ function App(props) {
       handleSearchClick={handleSearchClick}
     />
   );
-  if(urlArr[4])
+  if(urlArr[4] || (urlArr[3] && urlArr[3] === Favourites))
     searchField = "";
   return (
     <div className="App">
@@ -70,6 +71,7 @@ function App(props) {
         <Route exact path="/">
           <MovieCardsList 
             movies={movies}
+            loading={loading}
             error={error}
             handleToggleFav={handleToggleFav}
             handleCardClick={handleCardClick}
@@ -78,7 +80,8 @@ function App(props) {
         </Route>
         <Route exact path="/favourites">
           <MovieCardsList 
-            movies={movies}
+            movies={favList}
+            loading={loading}
             error={error}
             handleToggleFav={handleToggleFav} 
             favourites={true}
@@ -107,7 +110,8 @@ function mapStateToProps(state) {
     error: state.movies.error,
     page: state.movies.page,
     totalResults: state.movies.totalResults,
-    movieData: state.movies.movieData
+    movieData: state.movies.movieData,
+    favList: state.movies.favList
   }
 }
 

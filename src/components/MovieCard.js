@@ -10,7 +10,7 @@ export const MovieCard = (props) => {
 				<button 
 					type="button" 
 					className="movies_toggleFav"
-					onClick={(e) => handleToggleFav(e, movie.movieKey)} 
+					onClick={(e) => handleToggleFav(e, movie)} 
 				>
 					{ movie.isFavourite ? 'Unfavourite' : 'Favourite' }
 				</button>

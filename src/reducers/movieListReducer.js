@@ -8,6 +8,7 @@ import {
 
 const initialState = {
   list: [],
+  favList: [],
   loading: false,
   error: null,
   page: 1,
@@ -30,7 +31,8 @@ export default function userReducer(state = initialState, action) {
     case FETCH_MOVIES_SUCCESS:
       // All done: set loading "false".
       // Also, replace the movie list with the ones from the server
-      let moviesArr = action.payload.response.Search;
+      let moviesArr = [...action.payload.response.Search];
+      let favList = [...state.favList];
       if(action.payload.scrolled)
         moviesArr = state.list.concat(action.payload.response.Search);
       moviesArr = moviesArr.filter(function(movie) {
@@ -38,17 +40,24 @@ export default function userReducer(state = initialState, action) {
       });
       // localStorage check // set favourites
       let getList = localStorage.getItem('movieList');
-      if(getList)
+      if(getList){
         getList = JSON.parse(getList);
+        if(getList.length > 0)
+          getList = getList.map(list => {
+            list.isFavourite = true;
+            return list;
+          });
+      }
       moviesArr = moviesArr.map((movie, index) => {
-        let movieKey = movie.imdbID + '' + index;
         let favourite = false;
-        if(getList)
-          for(var i = 0; i<getList.length; i++)
-            if(getList[i] === movieKey)
+        if(getList){
+          for(var i = 0; i<getList.length; i++){
+            if(getList[i].imdbID === movie.imdbID) {
               favourite = true;
+            }
+          }
+        }
         movie.isFavourite = favourite;
-        movie.movieKey = movieKey;
         return movie;
       });
       return {
@@ -58,7 +67,8 @@ export default function userReducer(state = initialState, action) {
         page: action.payload.page,
         totalResults: action.payload.response.totalResults,
         error: null,
-        movieData: {}
+        movieData: {},
+        favList: getList
       };
 
     case FAV_MOVIE_LIST:
@@ -66,20 +76,30 @@ export default function userReducer(state = initialState, action) {
       // Also, get fav movie list
       let movieList = state.list;
       let updatedList = action.payload.list;
+      if(updatedList && updatedList.length > 0){
+        updatedList = updatedList.map(list => {
+          list.isFavourite = true;
+          return list;
+        })
+      }
       if(movieList.length > 0) {
         movieList = movieList.map((movie, index) => {
           movie.isFavourite = false;
           if(updatedList.length > 0)
-            for(var j = 0; j<updatedList.length; j++)
-              if(updatedList[j] === movie.movieKey)
+            for(var j = 0; j<updatedList.length; j++){
+              if(updatedList[j].imdbID === movie.imdbID){
                 movie.isFavourite = true;
+                // updatedList[j].isFavourite = true;
+              }
+            }
           return movie;
         })
       }
       return {
         ...state,
         list: movieList,
-        movieData: {}
+        movieData: {},
+        favList: updatedList
       };
 
     case MOVIE_DETAILS_SUCCESS:
@@ -98,7 +118,6 @@ export default function userReducer(state = initialState, action) {
         ...state,
         loading: false,
         error,
-        list: [],
         movieData: {}
       };
 

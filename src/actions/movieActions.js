@@ -54,30 +54,30 @@ export function fetchMovies(page, searchText, type, scrolled, totalResults) {
 }
 
 // handle favourites
-export function handleFavourites(movieKey) {
+export function handleFavourites(movie) {
   let getList = localStorage.getItem('movieList');
   let getIndex = null;
   if(getList) {
     getList = JSON.parse(getList);
     if(getList.length > 0 && getList !== null) {
       getList.map((list, index) => {
-        if(list === movieKey) {
+        if(list.imdbID === movie.imdbID) {
           getIndex = index;
         }
       })
       if(getIndex !== null)
         getList.splice(getIndex, 1);
       else
-        getList.push(movieKey);
+        getList.push(movie);
     }
     else {
       getList = [];
-      getList.push(movieKey)
+      getList.push(movie)
     }
   }
   else {
     getList = [];
-    getList.push(movieKey)
+    getList.push(movie)
   }
   let arrToString = JSON.stringify(getList);
   localStorage.setItem("movieList", arrToString);

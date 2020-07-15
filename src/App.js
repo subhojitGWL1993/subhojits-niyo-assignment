@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef, useCallback } from 'react';
+import React, { useState, useEffect } from 'react';
 // import logo from './logo.svg';
 import { connect } from "react-redux";
 import { fetchMovies, handleFavourites } from "./actions/movieActions";
@@ -12,7 +12,7 @@ import { Switch, Route, withRouter } from 'react-router-dom';
 const Favourites = "favourites";
 
 function App(props) {
-  const { movies, error, totalResults, page, loading, movieData, dispatch, favList } = props;
+  const { movies, error, loading, movieData, dispatch, favList } = props;
   const obj = { searchText: 'abc', type: 'All', pageNumber: 1, reRender: false, scrolled: false };
   const [dropData, setDropData] = useState({...obj});
   const urlArr = window.location.href.split('/');

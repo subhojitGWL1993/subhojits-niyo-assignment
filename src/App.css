@@ -208,6 +208,21 @@ button.movies_toggleFav:active {
   color: #D3D3D3;
 }
 
+.search_inputField:active {
+  background: url(./icons/search.png) top left no-repeat;
+  background-size: 20px;
+  height: 32px;
+  padding-left: 38px;
+  margin-top: 30px;
+  border: 1px solid #ccc;
+  background-position-x: 7px;
+  background-position-y: center;
+  width: 88%;
+  z-index: 99;
+  color: #D3D3D3;
+  outline: none;
+}
+
 .search_displayInline {
   display: inline-block;
 }
@@ -279,16 +294,29 @@ button.movies_toggleFav:active {
   font-size: 24px;
 }
 
-.list_loadingText {
+.App .list_loadingText {
+  font-family: 'Montserrat', sans-serif;
+  color: #FFFFFF;
+  text-align: left;
+  font-size: 18px;
+  padding: 10%;
+}
+
+.App .movies_classList_outer .list_loadingText {
   font-family: 'Montserrat', sans-serif;
   color: #FFFFFF;
   text-align: left;
   font-size: 18px;
   margin: 10%;
+  padding: 0;
 }
 
 @media screen and (max-width: 767px) {
-  .list_loadingText {
+  .App .list_loadingText {
+    padding: 20%;
+  }
+  .App .movies_classList_outer .list_loadingText {
+    padding: 10%;
     margin: 0 auto;
     /*margin-left: 2%;*/
   }
@@ -313,7 +341,7 @@ button.movies_toggleFav:active {
     width: 55%;
   }
   .search_inputField {
-    width: 78%;
+    width: 75%;
   }
   .movies_classList_outer .movies_classList .movies_cardOuter {
     width: 96%;
@@ -349,6 +377,7 @@ button.movies_toggleFav:active {
     font-family: 'Montserrat', sans-serif;
     font-weight: 400;
     cursor: pointer;
+    outline: none;
   }
 
   .searchButton_class:active {

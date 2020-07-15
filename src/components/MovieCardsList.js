@@ -3,7 +3,7 @@ import { MovieCard } from './MovieCard';
 const Favourites = "favourites";
 
 export const MovieCardsList = (props) => {
-	const { movies, error, lastMovieRef, handleToggleFav, favourites, handleCardClick, isEmpty, loading } = props;
+	const { movies, error, handleToggleFav, favourites, handleCardClick, isEmpty, loading } = props;
 	const urlArr = window.location.href.split('/');
 	let favClass = "";
 	if(urlArr[3] && urlArr[3] === Favourites)

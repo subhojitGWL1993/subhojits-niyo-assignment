@@ -11,6 +11,7 @@ export const SearchComponent = (props) => {
 							type="text" 
 							className="search_inputField"
 							onChange={handleSearch} 
+							placeholder="Search movies..."
 						/>
 					</div>
 					<div className="search_displayInline">

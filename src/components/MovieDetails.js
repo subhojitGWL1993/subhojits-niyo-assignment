@@ -8,6 +8,7 @@ export const MovieDetails = (props) => {
 	let urlArr = window.location.href.split('/');
 	useEffect(() => {
 	    props.dispatch(getMovieDetails(urlArr[4]));
+	     // eslint-disable-next-line
 	}, [urlArr[4]])
 	if(movie && !isEmpty(movie))
 		return(

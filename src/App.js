@@ -19,6 +19,7 @@ function App(props) {
   useEffect(() => {
     if(!urlArr[4])
       props.dispatch(fetchMovies(dropData.pageNumber, dropData.searchText, dropData.type, dropData.scrolled));
+     // eslint-disable-next-line
   }, [dropData.reRender])
   // empty object check
   const isEmpty = obj => {

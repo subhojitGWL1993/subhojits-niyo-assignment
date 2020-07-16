@@ -60,6 +60,7 @@ export function handleFavourites(movie) {
   if(getList) {
     getList = JSON.parse(getList);
     if(getList.length > 0 && getList !== null) {
+      // eslint-disable-next-line
       getList.map((list, index) => {
         if(list.imdbID === movie.imdbID) {
           getIndex = index;

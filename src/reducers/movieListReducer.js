@@ -32,6 +32,7 @@ export default function userReducer(state = initialState, action) {
       // All done: set loading "false".
       // Also, replace the movie list with the ones from the server
       let moviesArr = [...action.payload.response.Search];
+      // eslint-disable-next-line
       let favList = [...state.favList];
       if(action.payload.scrolled)
         moviesArr = state.list.concat(action.payload.response.Search);

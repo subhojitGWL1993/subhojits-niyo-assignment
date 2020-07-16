@@ -297,6 +297,7 @@ button.movies_toggleFav:active {
   text-align: left;
   font-size: 18px;
   padding: 10%;
+  padding-top: 20vh;
 }
 
 .App .movies_classList_outer .list_loadingText {
@@ -305,6 +306,7 @@ button.movies_toggleFav:active {
   text-align: left;
   font-size: 18px;
   margin: 10%;
+  margin-top: 8vh;
   padding: 0;
 }
 
@@ -339,10 +341,12 @@ button.movies_toggleFav:active {
 @media screen and (max-width: 767px) {
   .App .list_loadingText {
     padding: 20%;
+    padding-top: 20vh;
   }
   .App .movies_classList_outer .list_loadingText {
     padding: 10%;
     margin: 0 auto;
+    padding-top: 5vh;
     /*margin-left: 2%;*/
   }
   .font_important {

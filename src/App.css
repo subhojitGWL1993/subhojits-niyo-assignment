@@ -69,7 +69,7 @@ body {
 }
 
 .movies_classList_outer .movies_favOuter {
-  padding-top: 7%;
+  padding-top: 14vh;
 }
 
 .movie_details_classList_outer .movies_classList .movies_cardOuter {
@@ -278,13 +278,13 @@ button.movies_toggleFav:active {
 
 .searchDiv_outer {
   width: 98%;
-  margin-top: 5%;
+  margin-top: 8vh;
 }
 
 .search_component {
   display: flex;
   justify-content: flex-start;
-  margin-bottom: 3%;
+  margin-bottom: 3vh;
   margin-left: 2%;
 }
 
@@ -312,10 +312,7 @@ button.movies_toggleFav:active {
   padding: 0;
 }
 
-@media screen and (max-width: 1024px) {
-  .searchDiv_outer {
-    margin-top: 12%;
-  }
+@media screen and (max-width: 1024px) and (min-width: 768px) {
 
   .movies_classList_outer .movies_classList .movies_cardOuter {
     width: 45%;
@@ -326,15 +323,24 @@ button.movies_toggleFav:active {
   }
 
   .movies_classList_outer .movies_favOuter {
-    padding-top: 15%;
+    padding-top: 13vh;
   }
 
   .search_inputField {
     width: 90%;
+    height: 40px;
   }
 
   .search_inputClass {
     width: 63%;
+  }
+
+  .search_selectClass {
+    height: 43px;
+  }
+
+  .searchButton_class {
+    padding: 14px 40px;
   }
 }
 
@@ -357,7 +363,7 @@ button.movies_toggleFav:active {
     height: 5vh;
   }
   .searchDiv_outer {
-    margin-top: 12%;
+    margin-top: 6vh;
   }
   .search_selectClass {
     width: 100%;
@@ -417,7 +423,17 @@ button.movies_toggleFav:active {
     outline: none;
   }
   .movies_classList_outer .movies_favOuter {
-    padding-top: 15%;
+    padding-top: 12vh;
+  }
+}
+
+@media screen and (min-width: 734px) and (max-width: 767px) and (min-height: 754px) {
+  .search_inputClass {
+    width: 78%;
+  }
+
+  .search_inputField {
+    width: 92%;
   }
 }
 

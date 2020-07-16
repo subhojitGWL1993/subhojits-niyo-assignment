@@ -57,7 +57,7 @@ body {
 
 /* movie list card styles */
 .movie_details_classList_outer {
-  padding: 7% 0;
+  padding: 10vh 0;
 }
 
 .movies_classList_outer .movies_classList .movies_cardOuter {
@@ -66,10 +66,6 @@ body {
   width: 21%;
   cursor: pointer;
   margin-top: 0;
-}
-
-.movies_classList_outer .movies_favOuter {
-  padding-top: 14vh;
 }
 
 .movie_details_classList_outer .movies_classList .movies_cardOuter {
@@ -312,18 +308,14 @@ button.movies_toggleFav:active {
   padding: 0;
 }
 
+.movies_classList_outer .movies_favOuter {
+  padding-top: 13vh;
+}
+
 @media screen and (max-width: 1024px) and (min-width: 768px) {
 
   .movies_classList_outer .movies_classList .movies_cardOuter {
     width: 45%;
-  }
-
-  .movie_details_classList_outer {
-    padding: 15% 0;
-  }
-
-  .movies_classList_outer .movies_favOuter {
-    padding-top: 13vh;
   }
 
   .search_inputField {
@@ -385,9 +377,6 @@ button.movies_toggleFav:active {
     width: 92%;
     text-align: center;
   }
-  .movie_details_classList_outer {
-    padding: 15% 0;
-  }
   .movie_details_classList_outer .movies_cardOuter {
     display: block !important;
   }
@@ -423,7 +412,7 @@ button.movies_toggleFav:active {
     outline: none;
   }
   .movies_classList_outer .movies_favOuter {
-    padding-top: 12vh;
+    padding-top: 10vh;
   }
 }
 
